@@ -1,0 +1,65 @@
+/* 全局样式区域 */
+@import '~antd/dist/antd.css';
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 1rem !important;
+}
+html{
+  font-size: 62.5%;
+  // min-width: 1500px;
+}
+
+@media (max-width:1200px){
+  html{
+    font-size: 50%;
+  }
+}
+
+Button{
+  border-radius:0.2rem!important;
+}
+.type-button{
+  display: flex;
+  align-items: center;
+  .title{
+    width: 3rem;
+    font-size: 0.9rem !important;
+  }
+  .group{
+    display: flex;
+  }
+  .ant-select-selector{
+    border-radius: 1rem 0 0 1rem !important;
+    width: 5rem !important;
+    span{
+      font-size: 0.7rem !important;
+      color: rgb(149, 149, 149) !important;
+    }
+  }
+  .ant-select{
+    height: 0.5rem !important;
+    line-height: 0 !important;
+  }
+  Input{
+    border-radius: 0 1rem 1rem 0 !important;
+    font-size: 0.7rem !important;
+    padding-right: 2.2rem;
+  }
+
+  img{
+    width: 1.5rem;
+    height: 1.5rem;
+    position: relative;
+    left: -2rem;
+    top: 0.2rem;
+    z-index: 100;
+    cursor: pointer;
+  }
+
+  Button{
+    margin: 0 0.05rem;
+    border-bottom: 0;
+    height: 2.4rem;
+  }
+}

@@ -1,0 +1,113 @@
+import React,{useState} from 'react'
+import {Button,Divider,Form,Input,Select,DatePicker,message,Col,Upload} from 'antd';
+import ImgCrop from 'antd-img-crop';
+import {addContent} from '../../../../../type/type'
+import {useAddContent} from './util'
+import moment from 'moment';
+
+import './index.scss';
+
+const { Option } = Select;
+export default function Index() {
+    const [state,setState]=useState(-1)
+    const [disabled,setDisabled]=useState(false)
+    // 图片列表
+    const [upFileList,setUpFileList]:[any,Function]=useState([])
+    // 上传的图片key
+    const [cover,setCover]:[any,Function]=useState('')
+    // 新增突变
+    const {mutateAsync:addContentFunc}=useAddContent(['vipmanage','viplist',state])
+    // 提交
+    const handleSubmit= async (value:addContent)=>{
+        let data={
+            ...value,
+            // 根据moment属性获取时间戳
+            // power_expire_date:moment(value.expired_date).unix()*1000
+        }
+        addContentFunc(data).then((res:any)=>{
+            message.success('新增会员成功')
+            setDisabled(true)
+        })
+    }
+    
+  return (
+    <div className='vip-add'>
+        <span className='title'>新增会员信息</span>
+        <Divider style={{marginTop:'1rem'}} />
+        <Form
+              disabled={disabled}
+              className='form'
+              name="basic"
+              wrapperCol= {{ span: 8 }}
+              onFinish={handleSubmit}
+              autoComplete="off"
+            >
+                <Form.Item
+                  label="内容分类"
+                  name="power"
+                  rules={[{ required: true, message: '此项不能为空！' }]}
+                >
+                  <Select onChange={e=>setState(e)}  style={{ width: '14rem' }}>
+                    <Option value="0">普通会员</Option>
+                    <Option value="1">VIP</Option>
+                    <Option value="2">SVIP</Option>
+                  </Select>
+                </Form.Item>
+                <Form.Item
+                  label="内容标题"
+                  name="vip_name"
+                  rules={[{ required: true, message: '此项不能为空！' }]}
+                >
+                  <Input />
+                </Form.Item>
+                <Form.Item
+                  style={{marginTop:'-3.5rem'}}
+                  label="书籍封面"
+                  name='cover'
+                  rules={[{ required: true, message: '此项不能为空！' }]}
+                >   
+                {/* 用input模拟判断有没有插入图片 */}
+                  <Input size='small' style={{visibility:'hidden'}} />
+                </Form.Item>
+                <Col offset={3} style={{marginBottom:'0.5rem'}}>
+                  <ImgCrop key={123}>
+                      <Upload 
+                        fileList={upFileList} 
+                        maxCount={1} 
+                        customRequest={e=>uploadImageBtn(e,setUpFileList,setCover,form)}
+                        onRemove={()=>{setUpFileList([]);form.setFieldValue('cover',null)}}
+                        listType="picture-card"
+                      >
+                          <div>
+                            <PlusOutlined />
+                            <div style={{ marginTop: 8 }}>Upload</div>
+                          </div>
+                      </Upload>
+                  </ImgCrop>
+                </Col>
+                <Form.Item
+                  label="会员电话"
+                  name="phone"
+                  rules={[{ required: true, message: '此项不能为空！' }]}
+                >
+                  <Input maxLength={11} minLength={11} />
+                </Form.Item>
+                
+                <Form.Item
+                  label="到期时间"
+                  name="expired_date"
+                  rules={[{ required: true, message: '此项不能为空！' }]}
+                >
+                  <DatePicker style={{width:'14rem'}} placeholder='请选择到期时间' onChange={(e,value)=>console.log(e,value)}></DatePicker>
+                </Form.Item>
+
+                <Form.Item wrapperCol={{offset:4}}>
+                  
+                    <Button type="primary" htmlType="submit">
+                      新增
+                    </Button>
+                </Form.Item>
+            </Form>
+    </div>
+  )
+}

@@ -1,0 +1,29 @@
+/* 全局样式区域 */
+@import '~antd/dist/antd.css';
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 1rem !important;
+}
+html{
+  font-size: 62.5%;
+  min-width: 1500px;
+}
+Button{
+  border-radius:0.2rem!important;
+}
+.type-button{
+  display: flex;
+  .group{
+    display: flex;
+
+  }
+  .ant-select-selector{
+    border-radius: 1rem 0 0 1rem !important;
+  }
+  Button{
+    margin: 0 0.05rem;
+    border-bottom: 0;
+    height: 2.2rem;
+  }
+}

@@ -1,0 +1,15 @@
+.appoint-teacher{
+    .out-div{
+        display: flex;
+        justify-content: space-around;
+        .choose-item{
+            display: inline;
+            padding: 1rem 0.5rem; 
+            border-radius: 3rem;
+            background-color: wheat;
+            .top,.bottom{
+                text-align: center;
+            }
+        }
+    }
+}

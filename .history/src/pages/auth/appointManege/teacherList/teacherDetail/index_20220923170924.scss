@@ -1,0 +1,26 @@
+.appoint-teacher{
+    padding-right: 1rem;
+    .out-div{
+        display: flex;
+        justify-content: space-around;
+        font-size: 1rem;
+        margin-top: -1rem;
+        .choose-item{
+            display: inline;
+            padding: 0.5rem 0.1rem; 
+            width: 4rem;
+            border-radius: 2rem;
+            .top,.bottom{
+                text-align: center;
+            }
+        }
+       
+    }
+    .choose-time-item{
+        margin-top: 1rem;
+        background-color: lightgrey;
+        border-radius: 0.5rem;
+        padding: 0.3rem 0.8rem;
+        cursor: pointer;
+    }
+}
