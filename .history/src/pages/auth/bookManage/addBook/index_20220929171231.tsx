@@ -39,6 +39,19 @@ export default function Index() {
   useEffect(() => {
     inputRef.current?.focus();
   }, [addTag]);
+  // 监听
+  useEffect(() => {
+    // 添加监听事件
+    window.addEventListener("keypress", keyPress);
+    // 移除监听事件
+    return () => {
+      window.removeEventListener("keypress", keyPress);
+    };
+  }, []);
+  // 监听扫码枪
+  const keyPress = (e: any) => {
+    console.log(e.key);
+  };
 
   // 增加标签
   const addTagFunc = (e: any) => {
@@ -104,8 +117,8 @@ export default function Index() {
           rules={[{ required: true, message: "此项不能为空！" }]}
         >
           <Input
-            onChange={(e: any) => {
-              if (e.target.value.length == 13) console.log(e.target.value);
+            onPressEnter={(e) => {
+              console.log(111);
             }}
           />
         </Form.Item>

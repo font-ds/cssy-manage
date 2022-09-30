@@ -13,7 +13,6 @@ export const useConfig = (
     async onMutate(target: any) {
       const previousItems = queryClient.getQueryData(queryKey);
       queryClient.setQueryData(queryKey, (old?: any) => {
-        console.log(target, old);
         return callback(target, old);
       });
       return { previousItems };
@@ -65,6 +64,6 @@ export const useDeleteConfig = (queryKey: QueryKey, key: string = "id") =>
 // 增加
 export const useAddConfig = (queryKey: QueryKey) =>
   useConfig(queryKey, (target, old) => {
-    if (!old?.length) return old?.data ? [target, ...old?.data] : [];
+    if (!old.length) return old?.data ? [target, ...old?.data] : [];
     else return old ? [target, ...old] : [];
   });

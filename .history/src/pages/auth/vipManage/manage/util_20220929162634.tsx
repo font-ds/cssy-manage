@@ -26,8 +26,7 @@ export const useGetVipList = (
         data: res.data,
       };
       return data;
-    },
-    { keepPreviousData: true }
+    }
   );
 };
 

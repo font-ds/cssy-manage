@@ -6,7 +6,6 @@ import { vipUser } from "../../../../../type/type";
 export const useAddVip = (queryKey: QueryKey) => {
   const request = useRequest();
   return useMutation((params: vipUser) => {
-    console.log(params);
     return request("/back/vip", {
       method: "post",
       data: params,

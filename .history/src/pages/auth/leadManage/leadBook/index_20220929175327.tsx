@@ -96,12 +96,7 @@ export default function Index() {
           name="book_id"
           rules={[{ required: true, message: "此项不能为空！" }]}
         >
-          <Input
-            maxLength={13}
-            onChange={(e) => {
-              if (e.target.value.length == 13) console.log(e.target.value);
-            }}
-          ></Input>
+          <Input></Input>
         </Form.Item>
         <Button
           style={{ position: "relative", left: "38%", top: "-3.3rem" }}

@@ -105,7 +105,7 @@ export default function Index() {
         >
           <Input
             onChange={(e: any) => {
-              if (e.target.value.length == 13) console.log(e.target.value);
+              console.log(e.target.value);
             }}
           />
         </Form.Item>
